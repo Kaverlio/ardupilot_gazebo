@@ -1960,25 +1960,25 @@ LOITER> mode LAND
         <view_controller>orbit</view_controller>
       </camera>
     </gui>
-    
+
     <model name="iris">
       <pose> 0 0 1 0 0 0 0 </pose>
   	<include>
-  	  <uri>/home/nano/ardupilot_gazebo/models/iris_with_standoffs</uri>
+  	  <uri>/home/wintery/Projects/gazebo/models/iris_with_standoffs</uri>
   	</include>
     </model>
-    
-    
+
+
 <!--
     <model name="iris_demo_1">
       <pose> 0 0 1 0 0 0 0 </pose>
       <include>
-        <uri>/home/nano/ardupilot_gazebo/models/iris_with_standoffs_demo_1</uri>
+        <uri>/home/wintery/Projects/gazebo/models/iris_with_standoffs_demo_1</uri>
       </include>
     </model>
     -->
-    
-    
-    
+
+
+
   </world>
 </sdf>

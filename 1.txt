@@ -1,0 +1,1 @@
+gz topic -z /gazebo/default/iris_demo/iris_demo/gimbal_small_2d/tilt_link/camera/image

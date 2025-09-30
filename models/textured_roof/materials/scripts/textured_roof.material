@@ -1,0 +1,80 @@
+material TexturedRoof/HighRes
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.8 0.8 0.8 1.0
+      diffuse 1.0 1.0 1.0 1.0
+      specular 0.2 0.2 0.2 1.0 12.5
+
+      texture_unit
+      {
+        // You can use different texture files here
+        texture concrete_roof.jpg
+        // Or use a procedural pattern
+        // texture checker.png
+        scale 0.1 0.1
+        filtering trilinear
+      }
+    }
+  }
+}
+
+material TexturedRoof/Checkerboard
+{
+  technique
+  {
+    pass
+    {
+      ambient 1.0 1.0 1.0 1.0
+      diffuse 1.0 1.0 1.0 1.0
+
+      texture_unit
+      {
+        texture checker.png
+        scale 0.05 0.05
+        filtering trilinear
+      }
+    }
+  }
+}
+
+material TexturedRoof/ArUco
+{
+  technique
+  {
+    pass
+    {
+      ambient 1.0 1.0 1.0 1.0
+      diffuse 1.0 1.0 1.0 1.0
+
+      texture_unit
+      {
+        texture aruco_pattern.png
+        filtering trilinear
+      }
+    }
+  }
+}
+
+material TexturedRoof/GroundHighRes
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.9 0.9 0.9 1.0
+      diffuse 1.0 1.0 1.0 1.0
+      specular 0.1 0.1 0.1 1.0 20
+
+      texture_unit
+      {
+        texture orb_unique.png
+        scale 0.01 0.01
+        filtering anisotropic
+        anisotropy 16
+      }
+    }
+  }
+}

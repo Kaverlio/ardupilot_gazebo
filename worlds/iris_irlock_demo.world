@@ -102,7 +102,7 @@ LOITER> mode LAND
 
       </link>
     </model>
-    
+
  <!-- Чорний квадрат -->
 <model name="holder_start">
   <static>true</static>
@@ -120,7 +120,7 @@ LOITER> mode LAND
   <static>true</static>
   <pose>0 0 0 0 0 0</pose> <!-- лежить на чорному квадраті -->
   <link name="link">
-    <visual name="visual">    
+    <visual name="visual">
       <geometry>
         <cylinder>
           <radius>1</radius>
@@ -139,11 +139,11 @@ LOITER> mode LAND
 <model name="uav1">
   <pose>0 0 0.5 0 0 0</pose> <!-- 0.1 (square) + 0.1 (cylinder) + 0.05 (зазор) -->
   <include>
-    <uri>/home/nano/ardupilot_gazebo/models/iris_with_standoffs</uri>
+    <uri>/home/wintery/Projects/gazebo/models/iris_with_standoffs</uri>
     <pose>0 0 0 0 0 0</pose>
   </include>
 </model>
-    
+
 <!-- 1. Плитка -->
 <model name="tile_1">
   <static>true</static>
@@ -194,6 +194,6 @@ LOITER> mode LAND
   </link>
 </model>
 
-    
+
   </world>
 </sdf>

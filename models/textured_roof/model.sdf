@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="textured_roof">
+    <static>true</static>
+    <link name="link">
+      <pose>0 0 0 0 0 0</pose>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>15 10 0.02</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>model://textured_roof/materials/scripts</uri>
+            <uri>model://textured_roof/materials/textures</uri>
+            <name>TexturedRoof/HighRes</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

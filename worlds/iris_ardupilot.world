@@ -1966,10 +1966,10 @@ LOITER> mode LAND
     <model name="uav1">
       <pose> 0 0 0 0 0 0 </pose>
       <include>
-        <uri>/home/nano/ardupilot_gazebo/models/iris_with_standoffs</uri>
+        <uri>/home/wintery/Projects/gazebo/models/iris_with_standoffs</uri>
          <pose> 0 0 0 0 0 0 </pose>
       </include>
     </model>
-    
+
   </world>
 </sdf>
