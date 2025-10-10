@@ -1,0 +1,20 @@
+material OrbFeature/Ground
+{
+  technique
+  {
+    pass
+    {
+      ambient 0.9 0.9 0.9 1.0
+      diffuse 1.0 1.0 1.0 1.0
+      specular 0.05 0.05 0.05 1.0 10
+
+      texture_unit
+      {
+        texture orb_ground.png
+        filtering anisotropic
+        anisotropy 16
+        tex_address_mode clamp
+      }
+    }
+  }
+}

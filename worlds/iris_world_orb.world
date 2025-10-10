@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+    <gui>
+      <camera name="user_camera">
+        <pose>-5 0 1 0 0.2 0</pose>
+      </camera>
+    </gui>
+    <physics type="ode">
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>100</iters>
+          <sor>1.0</sor>
+        </solver>
+        <constraints>
+          <cfm>0.0</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>0.1</contact_max_correcting_vel>
+          <contact_surface_layer>0.0</contact_surface_layer>
+        </constraints>
+      </ode>
+      <real_time_update_rate>-1</real_time_update_rate>
+    </physics>
+    <gravity>0 0 -9.8</gravity>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <include>
+      <uri>file:///home/wintery/Projects/gazebo/models/orb_feature_ground</uri>
+      <name>ground_plane</name>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <model name="iris_demo">
+      <include>
+        <uri>/home/wintery/Projects/gazebo/models/iris_with_ardupilot</uri>
+      </include>
+      <pose>0 0 0.1 0 0 0</pose>
+    </model>
+  </world>
+</sdf>

@@ -1,0 +1,475 @@
+    <!-- Ultra-detailed textured landing zone with unique contrasted objects -->
+    <model name="ultra_landing_pad">
+      <static>true</static>
+      <pose>0 0 0.01 0 0 0</pose>
+      <link name="link">
+        <!-- Base with checkerboard texture instead of black -->
+        <visual name="base">
+          <geometry>
+            <cylinder>
+              <radius>3</radius>
+              <length>0.01</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Checkerboard</name>
+            </script>
+          </material>
+        </visual>
+
+        <!-- QR-code like pattern overlay -->
+        <visual name="qr_base">
+          <pose>0 0 0.001 0 0 0.785</pose>
+          <geometry>
+            <box>
+              <size>4 4 0.001</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- QR pattern blocks -->
+        <visual name="qr_block1">
+          <pose>-1 -1 0.002 0 0 0</pose>
+          <geometry>
+            <box><size>0.8 0.8 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="qr_block2">
+          <pose>1 -1 0.002 0 0 0</pose>
+          <geometry>
+            <box><size>0.8 0.8 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="qr_block3">
+          <pose>-1 1 0.002 0 0 0</pose>
+          <geometry>
+            <box><size>0.8 0.8 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Center ArUco-like marker -->
+        <visual name="aruco_center">
+          <pose>0 0 0.003 0 0 0</pose>
+          <geometry>
+            <box><size>1.2 1.2 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="aruco_pattern1">
+          <pose>-0.3 -0.3 0.004 0 0 0</pose>
+          <geometry>
+            <box><size>0.3 0.3 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="aruco_pattern2">
+          <pose>0.3 0.3 0.004 0 0 0</pose>
+          <geometry>
+            <box><size>0.3 0.3 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="aruco_pattern3">
+          <pose>0 0 0.004 0 0 0</pose>
+          <geometry>
+            <box><size>0.2 0.2 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Colorful geometric shapes for contrast -->
+        <!-- Red triangle-like shape -->
+        <visual name="triangle_red">
+          <pose>1.5 0 0.005 0 0 0</pose>
+          <geometry>
+            <box><size>0.7 0.7 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+            <emissive>0.2 0 0 1</emissive>
+          </material>
+        </visual>
+
+        <!-- Green hexagon -->
+        <visual name="hex_green">
+          <pose>-1.5 0 0.005 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.4</radius>
+              <length>0.001</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+            <emissive>0 0.2 0 1</emissive>
+          </material>
+        </visual>
+
+        <!-- Blue diamond -->
+        <visual name="diamond_blue">
+          <pose>0 1.5 0.005 0 0 0.785</pose>
+          <geometry>
+            <box><size>0.6 0.6 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+            <emissive>0 0 0.2 1</emissive>
+          </material>
+        </visual>
+
+        <!-- Yellow star-like pattern -->
+        <visual name="star_yellow">
+          <pose>0 -1.5 0.005 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.3</radius>
+              <length>0.001</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1 1 0 1</ambient>
+            <diffuse>1 1 0 1</diffuse>
+            <emissive>0.2 0.2 0 1</emissive>
+          </material>
+        </visual>
+
+        <!-- Purple cross -->
+        <visual name="cross_purple_h">
+          <pose>1 1 0.005 0 0 0</pose>
+          <geometry>
+            <box><size>0.5 0.1 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0.6 0 0.6 1</ambient>
+            <diffuse>0.6 0 0.6 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="cross_purple_v">
+          <pose>1 1 0.005 0 0 0</pose>
+          <geometry>
+            <box><size>0.1 0.5 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0.6 0 0.6 1</ambient>
+            <diffuse>0.6 0 0.6 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Orange circles -->
+        <visual name="circle_orange1">
+          <pose>-1 -1 0.005 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.25</radius>
+              <length>0.001</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1 0.5 0 1</ambient>
+            <diffuse>1 0.5 0 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Cyan squares -->
+        <visual name="square_cyan">
+          <pose>-1 1 0.005 0 0 0.3</pose>
+          <geometry>
+            <box><size>0.4 0.4 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 1 1 1</ambient>
+            <diffuse>0 1 1 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Magenta triangles -->
+        <visual name="triangle_magenta">
+          <pose>1 -1 0.005 0 0 0</pose>
+          <geometry>
+            <box><size>0.5 0.25 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>1 0 1 1</ambient>
+            <diffuse>1 0 1 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Grid overlay for extra features -->
+        <visual name="grid_line1">
+          <pose>0 -2 0.006 0 0 0</pose>
+          <geometry>
+            <box><size>4 0.05 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="grid_line2">
+          <pose>0 -1 0.006 0 0 0</pose>
+          <geometry>
+            <box><size>4 0.05 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="grid_line3">
+          <pose>0 0 0.006 0 0 0</pose>
+          <geometry>
+            <box><size>4 0.05 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="grid_line4">
+          <pose>0 1 0.006 0 0 0</pose>
+          <geometry>
+            <box><size>4 0.05 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="grid_line5">
+          <pose>0 2 0.006 0 0 0</pose>
+          <geometry>
+            <box><size>4 0.05 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Vertical grid lines -->
+        <visual name="grid_vline1">
+          <pose>-2 0 0.006 0 0 0</pose>
+          <geometry>
+            <box><size>0.05 4 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="grid_vline2">
+          <pose>-1 0 0.006 0 0 0</pose>
+          <geometry>
+            <box><size>0.05 4 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="grid_vline3">
+          <pose>1 0 0.006 0 0 0</pose>
+          <geometry>
+            <box><size>0.05 4 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="grid_vline4">
+          <pose>2 0 0.006 0 0 0</pose>
+          <geometry>
+            <box><size>0.05 4 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Text-like patterns (simulated with rectangles) -->
+        <visual name="text1">
+          <pose>0.7 0.7 0.007 0 0 0</pose>
+          <geometry>
+            <box><size>0.3 0.08 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="text2">
+          <pose>-0.7 0.7 0.007 0 0 0</pose>
+          <geometry>
+            <box><size>0.25 0.08 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="text3">
+          <pose>0.7 -0.7 0.007 0 0 0</pose>
+          <geometry>
+            <box><size>0.35 0.08 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="text4">
+          <pose>-0.7 -0.7 0.007 0 0 0</pose>
+          <geometry>
+            <box><size>0.2 0.08 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+        <!-- Numbered markers around the edge -->
+        <visual name="number_1">
+          <pose>2.5 0 0.008 0 0 0</pose>
+          <geometry>
+            <box><size>0.3 0.3 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="number_1_text">
+          <pose>2.5 0 0.009 0 0 0</pose>
+          <geometry>
+            <box><size>0.1 0.2 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="number_2">
+          <pose>0 2.5 0.008 0 0 0</pose>
+          <geometry>
+            <box><size>0.3 0.3 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="number_2_text">
+          <pose>0 2.5 0.009 0 0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.1</radius>
+              <length>0.001</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="number_3">
+          <pose>-2.5 0 0.008 0 0 0</pose>
+          <geometry>
+            <box><size>0.3 0.3 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="number_3_text">
+          <pose>-2.5 0 0.009 0 0 0</pose>
+          <geometry>
+            <box><size>0.15 0.05 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="number_4">
+          <pose>0 -2.5 0.008 0 0 0</pose>
+          <geometry>
+            <box><size>0.3 0.3 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+          </material>
+        </visual>
+
+        <visual name="number_4_cross">
+          <pose>0 -2.5 0.009 0 0 0.785</pose>
+          <geometry>
+            <box><size>0.2 0.05 0.001</size></box>
+          </geometry>
+          <material>
+            <ambient>0 0 0 1</ambient>
+            <diffuse>0 0 0 1</diffuse>
+          </material>
+        </visual>
+
+      </link>
+    </model>
