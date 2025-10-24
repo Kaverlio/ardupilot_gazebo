@@ -29,18 +29,10 @@
     </include>
 
     <include>
-      <uri>model://ground_plane</uri>
+      <uri>/home/nano/ardupilot_gazebo/models/ground_plane_unique</uri>
+      <name>ground_plane</name>
+      <pose>0 0 0 0 0 0</pose>
     </include>
-
-
-    <plugin name="map" filename="libStaticMapPlugin.so">
-      <center>-35.363261 149.165230</center>
-      <world_size>300</world_size>
-      <map_type>satellite</map_type>
-      <api_key>YOU_API_KEY</api_key>
-      <use_cache>true</use_cache>
-      <pose>0 0 0.2 0 0 -1.5708</pose>
-    </plugin>
       
   	<model name="iris_demo">
       <include>
