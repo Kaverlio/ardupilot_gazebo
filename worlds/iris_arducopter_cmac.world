@@ -6,6 +6,7 @@
         <pose>-5 0 1 0 0.2 0</pose>
       </camera>
     </gui>
+
     <physics type="ode">
       <ode>
         <solver>
@@ -21,23 +22,30 @@
         </constraints>
       </ode>
       <real_time_update_rate>-1</real_time_update_rate>
-      <!--<max_step_size>0.0020</max_step_size>-->
+      <!-- <max_step_size>0.0020</max_step_size> -->
     </physics>
+
     <gravity>0 0 -9.8</gravity>
+
+    <!-- сонце з офіційної бази моделей -->
     <include>
       <uri>model://sun</uri>
     </include>
 
+    <!-- твоя земля (кастомна модель) -->
     <include>
       <uri>/home/nano/ardupilot_gazebo/models/ground_plane_unique</uri>
       <name>ground_plane</name>
       <pose>0 0 0 0 0 0</pose>
     </include>
-      
-  	<model name="iris_demo">
-      <include>
-        <uri>/home/nano/ardupilot_gazebo/models/iris_with_ardupilot</uri>
-      </include>
-    </model>
+
+    <!-- дрон Iris з ardupilot_gazebo (ця модель вже містить потрібний плагін) -->
+    <include>
+      <uri>/home/nano/ardupilot_gazebo/models/iris_with_ardupilot</uri>
+      <name>iris_demo</name>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
   </world>
 </sdf>
+
