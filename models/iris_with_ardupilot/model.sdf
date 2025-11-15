@@ -5,7 +5,7 @@
       <uri>model://iris_with_standoffs</uri>
     </include>
 
-    <include>
+    <!-- <include>
       <uri>model://gimbal_small_2d</uri>
       <pose>0 -0.01 0.070 1.57 0 1.57</pose>
     </include>
@@ -74,7 +74,7 @@
     <joint name="gimbal_cam_mount" type="fixed">
       <parent>gimbal_small_2d::tilt_link</parent>
       <child>gimbal_cam_link</child>
-    </joint>
+    </joint> -->
     <!-- visual markers for debugging
     <link name="rotor_0_blade_1_cp">
       <gravity>0</gravity>
