@@ -32,7 +32,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile000</name>
           </script>
         </material>
@@ -49,7 +49,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile001</name>
           </script>
         </material>
@@ -66,7 +66,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile002</name>
           </script>
         </material>
@@ -83,7 +83,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile003</name>
           </script>
         </material>
@@ -100,7 +100,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile004</name>
           </script>
         </material>
@@ -117,7 +117,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile005</name>
           </script>
         </material>
@@ -134,7 +134,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile006</name>
           </script>
         </material>
@@ -151,7 +151,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile007</name>
           </script>
         </material>
@@ -168,7 +168,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile008</name>
           </script>
         </material>
@@ -185,7 +185,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile009</name>
           </script>
         </material>
@@ -202,7 +202,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile010</name>
           </script>
         </material>
@@ -219,7 +219,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile011</name>
           </script>
         </material>
@@ -236,7 +236,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile012</name>
           </script>
         </material>
@@ -253,7 +253,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile013</name>
           </script>
         </material>
@@ -270,7 +270,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile014</name>
           </script>
         </material>
@@ -287,7 +287,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile015</name>
           </script>
         </material>
@@ -304,7 +304,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile016</name>
           </script>
         </material>
@@ -321,7 +321,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile017</name>
           </script>
         </material>
@@ -338,7 +338,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile018</name>
           </script>
         </material>
@@ -355,7 +355,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile019</name>
           </script>
         </material>
@@ -372,7 +372,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile020</name>
           </script>
         </material>
@@ -389,7 +389,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile021</name>
           </script>
         </material>
@@ -406,7 +406,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile022</name>
           </script>
         </material>
@@ -423,7 +423,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile023</name>
           </script>
         </material>
@@ -440,7 +440,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile024</name>
           </script>
         </material>
@@ -457,7 +457,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile025</name>
           </script>
         </material>
@@ -474,7 +474,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile026</name>
           </script>
         </material>
@@ -491,7 +491,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile027</name>
           </script>
         </material>
@@ -508,7 +508,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile028</name>
           </script>
         </material>
@@ -525,7 +525,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile029</name>
           </script>
         </material>
@@ -542,7 +542,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile030</name>
           </script>
         </material>
@@ -559,7 +559,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile031</name>
           </script>
         </material>
@@ -576,7 +576,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile032</name>
           </script>
         </material>
@@ -593,7 +593,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile033</name>
           </script>
         </material>
@@ -610,7 +610,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile034</name>
           </script>
         </material>
@@ -627,7 +627,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile035</name>
           </script>
         </material>
@@ -644,7 +644,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile036</name>
           </script>
         </material>
@@ -661,7 +661,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile037</name>
           </script>
         </material>
@@ -678,7 +678,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile038</name>
           </script>
         </material>
@@ -695,7 +695,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile039</name>
           </script>
         </material>
@@ -712,7 +712,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile040</name>
           </script>
         </material>
@@ -729,7 +729,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile041</name>
           </script>
         </material>
@@ -746,7 +746,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile042</name>
           </script>
         </material>
@@ -763,7 +763,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile043</name>
           </script>
         </material>
@@ -780,7 +780,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile044</name>
           </script>
         </material>
@@ -797,7 +797,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile045</name>
           </script>
         </material>
@@ -814,7 +814,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile046</name>
           </script>
         </material>
@@ -831,7 +831,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile047</name>
           </script>
         </material>
@@ -848,7 +848,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile048</name>
           </script>
         </material>
@@ -865,7 +865,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile049</name>
           </script>
         </material>
@@ -882,7 +882,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile050</name>
           </script>
         </material>
@@ -899,7 +899,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile051</name>
           </script>
         </material>
@@ -916,7 +916,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile052</name>
           </script>
         </material>
@@ -933,7 +933,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile053</name>
           </script>
         </material>
@@ -950,7 +950,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile054</name>
           </script>
         </material>
@@ -967,7 +967,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile055</name>
           </script>
         </material>
@@ -984,7 +984,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile056</name>
           </script>
         </material>
@@ -1001,7 +1001,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile057</name>
           </script>
         </material>
@@ -1018,7 +1018,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile058</name>
           </script>
         </material>
@@ -1035,7 +1035,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile059</name>
           </script>
         </material>
@@ -1052,7 +1052,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile060</name>
           </script>
         </material>
@@ -1069,7 +1069,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile061</name>
           </script>
         </material>
@@ -1086,7 +1086,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile062</name>
           </script>
         </material>
@@ -1103,7 +1103,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile063</name>
           </script>
         </material>
@@ -1120,7 +1120,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile064</name>
           </script>
         </material>
@@ -1137,7 +1137,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile065</name>
           </script>
         </material>
@@ -1154,7 +1154,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile066</name>
           </script>
         </material>
@@ -1171,7 +1171,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile067</name>
           </script>
         </material>
@@ -1188,7 +1188,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile068</name>
           </script>
         </material>
@@ -1205,7 +1205,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile069</name>
           </script>
         </material>
@@ -1222,7 +1222,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile070</name>
           </script>
         </material>
@@ -1239,7 +1239,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile071</name>
           </script>
         </material>
@@ -1256,7 +1256,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile072</name>
           </script>
         </material>
@@ -1273,7 +1273,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile073</name>
           </script>
         </material>
@@ -1290,7 +1290,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile074</name>
           </script>
         </material>
@@ -1307,7 +1307,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile075</name>
           </script>
         </material>
@@ -1324,7 +1324,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile076</name>
           </script>
         </material>
@@ -1341,7 +1341,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile077</name>
           </script>
         </material>
@@ -1358,7 +1358,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile078</name>
           </script>
         </material>
@@ -1375,7 +1375,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile079</name>
           </script>
         </material>
@@ -1392,7 +1392,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile080</name>
           </script>
         </material>
@@ -1409,7 +1409,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile081</name>
           </script>
         </material>
@@ -1426,7 +1426,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile082</name>
           </script>
         </material>
@@ -1443,7 +1443,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile083</name>
           </script>
         </material>
@@ -1460,7 +1460,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile084</name>
           </script>
         </material>
@@ -1477,7 +1477,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile085</name>
           </script>
         </material>
@@ -1494,7 +1494,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile086</name>
           </script>
         </material>
@@ -1511,7 +1511,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile087</name>
           </script>
         </material>
@@ -1528,7 +1528,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile088</name>
           </script>
         </material>
@@ -1545,7 +1545,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile089</name>
           </script>
         </material>
@@ -1562,7 +1562,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile090</name>
           </script>
         </material>
@@ -1579,7 +1579,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile091</name>
           </script>
         </material>
@@ -1596,7 +1596,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile092</name>
           </script>
         </material>
@@ -1613,7 +1613,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile093</name>
           </script>
         </material>
@@ -1630,7 +1630,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile094</name>
           </script>
         </material>
@@ -1647,7 +1647,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile095</name>
           </script>
         </material>
@@ -1664,7 +1664,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile096</name>
           </script>
         </material>
@@ -1681,7 +1681,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile097</name>
           </script>
         </material>
@@ -1698,7 +1698,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile098</name>
           </script>
         </material>
@@ -1715,7 +1715,7 @@
         <material>
           <script>
             <uri>model://ground_plane_unique/materials/scripts</uri>
-            <uri>model://ground_plane_unique/materials/textures</uri>
+            <uri>model://ground_plane_unique/materials/textures/textures_augmented</uri>
             <name>GroundUnique/Tile099</name>
           </script>
         </material>
