@@ -13,6 +13,8 @@
           <type>quick</type>
           <iters>100</iters>
           <sor>1.0</sor>
+          <island_threads>16</island_threads>
+          <thread_position_correction>true</thread_position_correction>
         </solver>
         <constraints>
           <cfm>0.0</cfm>
