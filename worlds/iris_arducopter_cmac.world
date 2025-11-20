@@ -54,7 +54,7 @@
       <uri>model://iris_with_standoffs</uri>
       <name>iris_target</name>
       <pose>20 0 5 0 0 3.14159</pose>
-      <static>true</static>
+      <static>false</static>
     </include>
 
   </world>
