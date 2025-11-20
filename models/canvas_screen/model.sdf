@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <model name="canvas_screen">
+    <static>true</static>
+
+    <link name="screen_link">
+      <!-- висота 1 м, дивиться вздовж +X -->
+      <pose>0 0 1 0 0 0</pose>
+
+      <visual name="screen_visual">
+        <!-- площина 2x1.5 м -->
+        <geometry>
+          <plane>
+            <normal>1 0 0</normal>
+            <size>2 1.5</size>
+          </plane>
+        </geometry>
+
+        <!-- стартовий матеріал не важливий – плагін замінить -->
+        <material>
+          <ambient>0.7 0.7 0.7 1</ambient>
+          <diffuse>0.7 0.7 0.7 1</diffuse>
+        </material>
+
+        <plugin name="canvas_plugin" filename="libCanvasPlugin.so">
+        <images_dir>model://ground_plane_unique/materials/textures</images_dir>
+
+        <width>1024</width>
+        <height>1024</height>
+
+        <interval>1.0</interval>
+      </plugin>
+      </visual>
+    </link>
+  </model>
+</sdf>
