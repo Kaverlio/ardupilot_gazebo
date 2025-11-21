@@ -128,9 +128,11 @@ void FollowerDownCamPlugin::OnUpdate()
       targetPose.Pos() + targetPose.Rot() * this->offset;
 
   // Keep the camera level with the world frame so the optical axis always
-  // matches -Z irrespective of the target attitude.
-  static const ignition::math::Quaterniond nadirOrientation(0, 0, 0);
-  ignition::math::Pose3d desiredPose(desiredPos, nadirOrientation);
+  // matches -Z irrespective of the target attitude, but allow yaw to follow
+  // the target so the image frame rotates with vehicle heading.
+  double targetYaw = targetPose.Rot().Yaw();
+  ignition::math::Quaterniond desiredRot(0, 0, targetYaw);
+  ignition::math::Pose3d desiredPose(desiredPos, desiredRot);
 
   this->model->SetWorldPose(desiredPose);
 }

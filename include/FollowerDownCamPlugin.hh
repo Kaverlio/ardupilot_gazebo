@@ -26,8 +26,8 @@
 
 namespace gazebo
 {
-  /// \brief Simple plugin that repositions and re-orients a camera model so it
-  /// always looks straight down at a target vehicle.
+  /// \brief Simple plugin that repositions a camera model so it always looks
+  /// straight down at a target vehicle while matching its yaw heading.
   class GAZEBO_VISIBLE FollowerDownCamPlugin : public ModelPlugin
   {
     /// \brief Load configuration from SDF.
