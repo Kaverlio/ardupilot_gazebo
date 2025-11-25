@@ -141,6 +141,15 @@
       <link_name>iris::rotor_3</link_name>
     </plugin>
     <plugin name="arducopter_plugin" filename="libArduPilotPlugin.so">
+      <!-- за скільки хвилин почати знижувати тягу -->
+      <thrust_scale_delay_min>1.0</thrust_scale_delay_min>
+
+      <!-- протягом скількох хвилин лінійно довести тягу до нуля -->
+      <thrust_scale_duration_min>2.0</thrust_scale_duration_min>
+
+      <!-- період логування тяги в секундах (0.1 = 100 мс) -->
+      <thrust_log_period_sec>0.1</thrust_log_period_sec>
+      
       <fdm_addr>127.0.0.1</fdm_addr>
       <fdm_port_in>9002</fdm_port_in>
       <fdm_port_out>9003</fdm_port_out>

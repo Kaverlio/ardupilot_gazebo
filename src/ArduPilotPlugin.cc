@@ -16,10 +16,11 @@
 */
 #include <functional>
 #include <fcntl.h>
+#include <sstream>  // для логування тяги
+
 #ifdef _WIN32
   #include <Winsock2.h>
   #include <Ws2def.h>
-  #include <Ws2ipdef.h>
   #include <Ws2tcpip.h>
   using raw_type = char;
 #else
@@ -82,25 +83,12 @@ struct fdmPacket
   /// \brief Model position in NED frame
   double positionXYZ[3];
 /*  NOT MERGED IN MASTER YET
-  /// \brief Model latitude in WGS84 system
   double latitude = 0.0;
-
-  /// \brief Model longitude in WGS84 system
   double longitude = 0.0;
-
-  /// \brief Model altitude from GPS
   double altitude = 0.0;
-
-  /// \brief Model estimated from airspeed sensor (e.g. Pitot) in m/s
   double airspeed = 0.0;
-
-  /// \brief Battery voltage. Default to -1 to use sitl estimator.
   double battery_voltage = -1.0;
-
-  /// \brief Battery Current.
   double battery_current = 0.0;
-
-  /// \brief Model rangefinder value. Default to -1 to use sitl rangefinder.
   double rangefinder = -1.0;
 */
 };
@@ -119,8 +107,8 @@ class Control
     this->pid.Init(0.1, 0, 0, 0, 0, 1.0, -1.0);
   }
 
-  /// \brief copy constructor
-  public: Control& operator=(const Control& source) = default;
+  /// \brief copy operator (дозволяє зберігати Control у std::vector без warning’ів)
+  public: Control &operator=(const Control &source) = default;
 
   /// \brief control id / channel
   public: int channel = 0;
@@ -192,9 +180,6 @@ class gazebo::ArduPilotSocketPrivate
   }
 
   /// \brief Bind to an adress and port
-  /// \param[in] _address Address to bind to.
-  /// \param[in] _port Port to bind to.
-  /// \return True on success.
   public: bool Bind(const char *_address, const uint16_t _port)
   {
     struct sockaddr_in sockaddr;
@@ -226,9 +211,6 @@ class gazebo::ArduPilotSocketPrivate
   }
 
   /// \brief Connect to an adress and port
-  /// \param[in] _address Address to connect to.
-  /// \param[in] _port Port to connect to.
-  /// \return True on success.
   public : bool Connect(const char *_address, const uint16_t _port)
   {
     struct sockaddr_in sockaddr;
@@ -260,9 +242,6 @@ class gazebo::ArduPilotSocketPrivate
   }
 
   /// \brief Make a socket
-  /// \param[in] _address Socket address.
-  /// \param[in] _port Socket port
-  /// \param[out] _sockaddr New socket address structure.
   public: void MakeSockAddr(const char *_address, const uint16_t _port,
     struct sockaddr_in &_sockaddr)
   {
@@ -283,9 +262,6 @@ class gazebo::ArduPilotSocketPrivate
   }
 
   /// \brief Receive data
-  /// \param[out] _buf Buffer that receives the data.
-  /// \param[in] _size Size of the buffer.
-  /// \param[in] _timeoutMS Milliseconds to wait for data.
   public: ssize_t Recv(void *_buf, const size_t _size, uint32_t _timeoutMs)
   {
     fd_set fds;
@@ -362,7 +338,6 @@ class gazebo::ArduPilotPluginPrivate
   public: sensors::RaySensorPtr rangefinderSensor;
 
   /// \brief false before ardupilot controller is online
-  /// to allow gazebo to continue without waiting
   public: bool arduPilotOnline;
 
   /// \brief number of times ArduCotper skips update
@@ -371,6 +346,24 @@ class gazebo::ArduPilotPluginPrivate
   /// \brief number of times ArduCotper skips update
   /// before marking ArduPilot offline
   public: int connectionTimeoutMaxCount;
+
+  /// \brief sim time when we start counting for thrust scaling
+  public: gazebo::common::Time startSimTime;
+
+  /// \brief current thrust scale [0..1]
+  public: double thrustScale = 1.0;
+
+  /// \brief duration of linear thrust scaling in seconds (0 = disabled)
+  public: double thrustScaleDurationSec = 0.0;
+
+  /// \brief delay before thrust scaling starts, in seconds
+  public: double thrustScaleDelaySec = 0.0;
+
+  /// \brief last time we logged thrust
+  public: gazebo::common::Time lastThrustLogTime;
+
+  /// \brief log period in seconds (<=0 = disabled)
+  public: double thrustLogPeriodSec = 0.0;
 };
 
 /////////////////////////////////////////////////
@@ -394,6 +387,46 @@ void ArduPilotPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
 
   this->dataPtr->model = _model;
   this->dataPtr->modelName = this->dataPtr->model->GetName();
+
+  // Initial sim time for thrust scaling
+  this->dataPtr->startSimTime =
+    this->dataPtr->model->GetWorld()->SimTime();
+
+  // Configure linear thrust scaling duration: <thrust_scale_duration_min> (minutes)
+  double scaleDurationMin =
+    _sdf->Get("thrust_scale_duration_min", static_cast<double>(0.0)).first;
+  if (scaleDurationMin < 0.0)
+    scaleDurationMin = 0.0;
+  this->dataPtr->thrustScaleDurationSec = scaleDurationMin * 60.0;
+
+  // NEW: delay before scaling starts: <thrust_scale_delay_min> (minutes)
+  double scaleDelayMin =
+    _sdf->Get("thrust_scale_delay_min", static_cast<double>(0.0)).first;
+  if (scaleDelayMin < 0.0)
+    scaleDelayMin = 0.0;
+  this->dataPtr->thrustScaleDelaySec = scaleDelayMin * 60.0;
+
+  // Logging period for thrust (seconds). 0.1 = 100 ms
+  this->dataPtr->thrustLogPeriodSec =
+    _sdf->Get("thrust_log_period_sec", static_cast<double>(0.1)).first;
+  if (this->dataPtr->thrustLogPeriodSec < 0.0)
+    this->dataPtr->thrustLogPeriodSec = 0.0;
+
+  this->dataPtr->lastThrustLogTime =
+    this->dataPtr->model->GetWorld()->SimTime();
+
+  if (this->dataPtr->thrustScaleDurationSec > 0.0)
+  {
+    gzlog << "[" << this->dataPtr->modelName << "] "
+          << "thrust scaling enabled: "
+          << "delay(min)=" << scaleDelayMin
+          << ", duration(min)=" << scaleDurationMin << std::endl;
+  }
+  else
+  {
+    gzlog << "[" << this->dataPtr->modelName << "] "
+          << "thrust scaling disabled." << std::endl;
+  }
 
   // modelXYZToAirplaneXForwardZDown brings us from gazebo model frame:
   // x-forward, y-right, z-down
@@ -570,9 +603,6 @@ void ArduPilotPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
     // initialize filter to zero value
     control.filter.Set(0.0);
 
-    // note to use this filter, do
-    // stateFiltered = filter.Process(stateRaw);
-
     // Overload the PID parameters if they are available.
     double param;
     // carry over from ArduCopter plugin
@@ -673,9 +703,6 @@ void ArduPilotPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
       gzwarn << "[" << this->dataPtr->modelName << "] "
              << "imu_sensor scoped name [" << imuName
              << "] not found, trying unscoped name.\n" << "\n";
-      // TODO: this fails for multi-nested models.
-      // TODO: and transforms fail for rotated nested model,
-      //       joints point the wrong way.
       this->dataPtr->imuSensor = std::dynamic_pointer_cast<sensors::ImuSensor>
         (sensors::SensorManager::Instance()->GetSensor(imuName));
     }
@@ -688,133 +715,7 @@ void ArduPilotPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf)
       return;
     }
   }
-/* NOT MERGED IN MASTER YET
-    // Get GPS
-  std::string gpsName = _sdf->Get("imuName", static_cast<std::string>("gps_sensor")).first;
-  std::vector<std::string> gpsScopedName = SensorScopedName(this->dataPtr->model, gpsName);
-  if (gpsScopedName.size() > 1)
-  {
-    gzwarn << "[" << this->dataPtr->modelName << "] "
-           << "multiple names match [" << gpsName << "] using first found"
-           << " name.\n";
-    for (unsigned k = 0; k < gpsScopedName.size(); ++k)
-    {
-      gzwarn << "  sensor " << k << " [" << gpsScopedName[k] << "].\n";
-    }
-  }
 
-  if (gpsScopedName.size() > 0)
-  {
-    this->dataPtr->gpsSensor = std::dynamic_pointer_cast<sensors::GpsSensor>
-      (sensors::SensorManager::Instance()->GetSensor(gpsScopedName[0]));
-  }
-
-  if (!this->dataPtr->gpsSensor)
-  {
-    if (gpsScopedName.size() > 1)
-    {
-      gzwarn << "[" << this->dataPtr->modelName << "] "
-             << "first gps_sensor scoped name [" << gpsScopedName[0]
-             << "] not found, trying the rest of the sensor names.\n";
-      for (unsigned k = 1; k < gpsScopedName.size(); ++k)
-      {
-        this->dataPtr->gpsSensor = std::dynamic_pointer_cast<sensors::GpsSensor>
-          (sensors::SensorManager::Instance()->GetSensor(gpsScopedName[k]));
-        if (this->dataPtr->gpsSensor)
-        {
-          gzwarn << "found [" << gpsScopedName[k] << "]\n";
-          break;
-        }
-      }
-    }
-
-    if (!this->dataPtr->gpsSensor)
-    {
-      gzwarn << "[" << this->dataPtr->modelName << "] "
-             << "gps_sensor scoped name [" << gpsName
-             << "] not found, trying unscoped name.\n" << "\n";
-      this->dataPtr->gpsSensor = std::dynamic_pointer_cast<sensors::GpsSensor>
-        (sensors::SensorManager::Instance()->GetSensor(gpsName));
-    }
-
-    if (!this->dataPtr->gpsSensor)
-    {
-      gzwarn << "[" << this->dataPtr->modelName << "] "
-             << "gps [" << gpsName
-             << "] not found, skipping gps support.\n" << "\n";
-    }
-    else
-    {
-      gzwarn << "[" << this->dataPtr->modelName << "] "
-             << "  found "  << " [" << gpsName << "].\n";
-    }
-  }
-
-  // Get Rangefinder
-  // TODO add sonar
-  std::string rangefinderName = _sdf->Get("rangefinderName",
-    static_cast<std::string>("rangefinder_sensor")).first;
-  std::vector<std::string> rangefinderScopedName = SensorScopedName(this->dataPtr->model, rangefinderName);
-  if (rangefinderScopedName.size() > 1)
-  {
-    gzwarn << "[" << this->dataPtr->modelName << "] "
-           << "multiple names match [" << rangefinderName << "] using first found"
-           << " name.\n";
-    for (unsigned k = 0; k < rangefinderScopedName.size(); ++k)
-    {
-      gzwarn << "  sensor " << k << " [" << rangefinderScopedName[k] << "].\n";
-    }
-  }
-
-  if (rangefinderScopedName.size() > 0)
-  {
-    this->dataPtr->rangefinderSensor = std::dynamic_pointer_cast<sensors::RaySensor>
-      (sensors::SensorManager::Instance()->GetSensor(rangefinderScopedName[0]));
-  }
-
-  if (!this->dataPtr->rangefinderSensor)
-  {
-    if (rangefinderScopedName.size() > 1)
-    {
-      gzwarn << "[" << this->dataPtr->modelName << "] "
-             << "first rangefinder_sensor scoped name [" << rangefinderScopedName[0]
-             << "] not found, trying the rest of the sensor names.\n";
-      for (unsigned k = 1; k < rangefinderScopedName.size(); ++k)
-      {
-        this->dataPtr->rangefinderSensor = std::dynamic_pointer_cast<sensors::RaySensor>
-          (sensors::SensorManager::Instance()->GetSensor(rangefinderScopedName[k]));
-        if (this->dataPtr->rangefinderSensor)
-        {
-          gzwarn << "found [" << rangefinderScopedName[k] << "]\n";
-          break;
-        }
-      }
-    }
-
-    if (!this->dataPtr->rangefinderSensor)
-    {
-      gzwarn << "[" << this->dataPtr->modelName << "] "
-             << "rangefinder_sensor scoped name [" << rangefinderName
-             << "] not found, trying unscoped name.\n" << "\n";
-      /// TODO: this fails for multi-nested models.
-      /// TODO: and transforms fail for rotated nested model,
-      ///       joints point the wrong way.
-      this->dataPtr->rangefinderSensor = std::dynamic_pointer_cast<sensors::RaySensor>
-        (sensors::SensorManager::Instance()->GetSensor(rangefinderName));
-    }
-    if (!this->dataPtr->rangefinderSensor)
-    {
-      gzwarn << "[" << this->dataPtr->modelName << "] "
-             << "ranfinder [" << rangefinderName
-             << "] not found, skipping rangefinder support.\n" << "\n";
-    }
-    else
-    {
-      gzwarn << "[" << this->dataPtr->modelName << "] "
-             << "  found "  << " [" << rangefinderName << "].\n";
-    }
-  }
-*/
   // Controller time control.
   this->dataPtr->lastControllerUpdateTime = 0;
 
@@ -845,6 +746,47 @@ void ArduPilotPlugin::OnUpdate()
   const gazebo::common::Time curTime =
     this->dataPtr->model->GetWorld()->SimTime();
 
+  // Update thrust scale with delay:
+  //
+  // до (startSimTime + thrustScaleDelaySec) -> thrustScale = 1.0
+  // далі протягом thrustScaleDurationSec -> лінійно від 1.0 до 0.0
+  // після закінчення -> 0.0
+  if (this->dataPtr->thrustScaleDurationSec > 0.0)
+  {
+    const double elapsed =
+      (curTime - this->dataPtr->startSimTime).Double();
+
+    double t = elapsed - this->dataPtr->thrustScaleDelaySec;
+
+    double scale = 1.0;
+    if (t <= 0.0)
+    {
+      // ще не почали знижувати
+      scale = 1.0;
+    }
+    else if (t >= this->dataPtr->thrustScaleDurationSec)
+    {
+      // повністю "посадили" тягу
+      scale = 0.0;
+    }
+    else
+    {
+      // лінійне зменшення
+      scale = 1.0 - t / this->dataPtr->thrustScaleDurationSec;
+    }
+
+    if (scale < 0.0)
+      scale = 0.0;
+    else if (scale > 1.0)
+      scale = 1.0;
+
+    this->dataPtr->thrustScale = scale;
+  }
+  else
+  {
+    this->dataPtr->thrustScale = 1.0;
+  }
+
   // Update the control surfaces and publish the new state.
   if (curTime > this->dataPtr->lastControllerUpdateTime)
   {
@@ -854,6 +796,32 @@ void ArduPilotPlugin::OnUpdate()
       this->ApplyMotorForces((curTime -
         this->dataPtr->lastControllerUpdateTime).Double());
       this->SendState();
+
+      // Логування поточної тяги кожні thrustLogPeriodSec секунд
+      if (this->dataPtr->thrustLogPeriodSec > 0.0)
+      {
+        const double dtLog =
+          (curTime - this->dataPtr->lastThrustLogTime).Double();
+
+        if (dtLog >= this->dataPtr->thrustLogPeriodSec)
+        {
+          this->dataPtr->lastThrustLogTime = curTime;
+
+          std::ostringstream ss;
+          ss << "[" << this->dataPtr->modelName << "] "
+             << "thrustScale=" << this->dataPtr->thrustScale
+             << " cmds:";
+
+          const size_t n = this->dataPtr->controls.size();
+          for (size_t i = 0; i < n; ++i)
+          {
+            ss << " " << i << "=" << this->dataPtr->controls[i].cmd;
+          }
+
+          // Використовуємо debug-лог, щоб не засмічувати звичайний лог
+          gzdbg << ss.str() << std::endl;
+        }
+      }
     }
   }
 
@@ -965,15 +933,6 @@ void ArduPilotPlugin::ApplyMotorForces(const double _dt)
 /////////////////////////////////////////////////
 void ArduPilotPlugin::ReceiveMotorCommand()
 {
-  // Added detection for whether ArduPilot is online or not.
-  // If ArduPilot is detected (receive of fdm packet from someone),
-  // then socket receive wait time is increased from 1ms to 1 sec
-  // to accomodate network jitter.
-  // If ArduPilot is not detected, receive call blocks for 1ms
-  // on each call.
-  // Once ArduPilot presence is detected, it takes this many
-  // missed receives before declaring the FCS offline.
-
   ServoPacket pkt;
   uint32_t waitMs;
   if (this->dataPtr->arduPilotOnline)
@@ -995,7 +954,6 @@ void ArduPilotPlugin::ReceiveMotorCommand()
   ServoPacket last_pkt;
   while (true)
   {
-    // last_pkt = pkt;
     const ssize_t recvSize_last =
       this->dataPtr->socket_in.Recv(&last_pkt, sizeof(ServoPacket), 0ul);
     if (recvSize_last == -1)
@@ -1014,8 +972,6 @@ void ArduPilotPlugin::ReceiveMotorCommand()
 
   if (recvSize == -1)
   {
-    // didn't receive a packet
-    // gzdbg << "no packet\n";
     gazebo::common::Time::NSleep(100);
     if (this->dataPtr->arduPilotOnline)
     {
@@ -1038,7 +994,7 @@ void ArduPilotPlugin::ReceiveMotorCommand()
   else
   {
     const ssize_t expectedPktSize =
-    sizeof(pkt.motorSpeed[0]) * this->dataPtr->controls.size();
+      sizeof(pkt.motorSpeed[0]) * this->dataPtr->controls.size();
     if (recvSize < expectedPktSize)
     {
       gzerr << "[" << this->dataPtr->modelName << "] "
@@ -1046,16 +1002,11 @@ void ArduPilotPlugin::ReceiveMotorCommand()
             << "commands, expected size: " << expectedPktSize << "\n";
     }
     const ssize_t recvChannels = recvSize / sizeof(pkt.motorSpeed[0]);
-    // for(unsigned int i = 0; i < recvChannels; ++i)
-    // {
-    //   gzdbg << "servo_command [" << i << "]: " << pkt.motorSpeed[i] << "\n";
-    // }
 
     if (!this->dataPtr->arduPilotOnline)
     {
       gzdbg << "[" << this->dataPtr->modelName << "] "
             << "ArduPilot controller online detected.\n";
-      // made connection, set some flags
       this->dataPtr->connectionTimeoutCount = 0;
       this->dataPtr->arduPilotOnline = true;
     }
@@ -1067,21 +1018,17 @@ void ArduPilotPlugin::ReceiveMotorCommand()
       {
         if (this->dataPtr->controls[i].channel < recvChannels)
         {
-          // bound incoming cmd between 0 and 1
+          // bound incoming cmd between -1 and 1
           const double cmd = ignition::math::clamp(
             pkt.motorSpeed[this->dataPtr->controls[i].channel],
             -1.0f, 1.0f);
+
+          // apply global thrust scaling (з урахуванням часу і затримки)
+          const double scaledCmd = cmd * this->dataPtr->thrustScale;
+
           this->dataPtr->controls[i].cmd =
             this->dataPtr->controls[i].multiplier *
-            (this->dataPtr->controls[i].offset + cmd);
-          // gzdbg << "apply input chan[" << this->dataPtr->controls[i].channel
-          //       << "] to control chan[" << i
-          //       << "] with joint name ["
-          //       << this->dataPtr->controls[i].jointName
-          //       << "] raw cmd ["
-          //       << pkt.motorSpeed[this->dataPtr->controls[i].channel]
-          //       << "] adjusted cmd [" << this->dataPtr->controls[i].cmd
-          //       << "].\n";
+            (this->dataPtr->controls[i].offset + scaledCmd);
         }
         else
         {
@@ -1111,86 +1058,42 @@ void ArduPilotPlugin::SendState() const
 
   pkt.timestamp = this->dataPtr->model->GetWorld()->SimTime().Double();
 
-  // asssumed that the imu orientation is:
-  //   x forward
-  //   y right
-  //   z down
-
   // get linear acceleration in body frame
   const ignition::math::Vector3d linearAccel =
     this->dataPtr->imuSensor->LinearAcceleration();
 
-  // copy to pkt
   pkt.imuLinearAccelerationXYZ[0] = linearAccel.X();
   pkt.imuLinearAccelerationXYZ[1] = linearAccel.Y();
   pkt.imuLinearAccelerationXYZ[2] = linearAccel.Z();
-  // gzerr << "lin accel [" << linearAccel << "]\n";
 
   // get angular velocity in body frame
   const ignition::math::Vector3d angularVel =
     this->dataPtr->imuSensor->AngularVelocity();
 
-  // copy to pkt
   pkt.imuAngularVelocityRPY[0] = angularVel.X();
   pkt.imuAngularVelocityRPY[1] = angularVel.Y();
   pkt.imuAngularVelocityRPY[2] = angularVel.Z();
 
-  // get inertial pose and velocity
-  // position of the uav in world frame
-  // this position is used to calcualte bearing and distance
-  // from starting location, then use that to update gps position.
-  // The algorithm looks something like below (from ardupilot helper
-  // libraries):
-  //   bearing = to_degrees(atan2(position.y, position.x));
-  //   distance = math.sqrt(self.position.x**2 + self.position.y**2)
-  //   (self.latitude, self.longitude) = util.gps_newpos(
-  //    self.home_latitude, self.home_longitude, bearing, distance)
-  // where xyz is in the NED directions.
-  // Gazebo world xyz is assumed to be N, -E, -D, so flip some stuff
-  // around.
-  // orientation of the uav in world NED frame -
-  // assuming the world NED frame has xyz mapped to NED,
-  // imuLink is NED - z down
-
-  // model world pose brings us to model,
-  // which for example zephyr has -y-forward, x-left, z-up
-  // adding modelXYZToAirplaneXForwardZDown rotates
-  //   from: model XYZ
-  //   to: airplane x-forward, y-left, z-down
+  // pose трансформації
   const ignition::math::Pose3d gazeboXYZToModelXForwardZDown =
     this->modelXYZToAirplaneXForwardZDown +
     this->dataPtr->model->WorldPose();
 
-  // get transform from world NED to Model frame
   const ignition::math::Pose3d NEDToModelXForwardZUp =
     gazeboXYZToModelXForwardZDown - this->gazeboXYZToNED;
 
-  // gzerr << "ned to model [" << NEDToModelXForwardZUp << "]\n";
-
-  // N
+  // NED position
   pkt.positionXYZ[0] = NEDToModelXForwardZUp.Pos().X();
-
-  // E
   pkt.positionXYZ[1] = NEDToModelXForwardZUp.Pos().Y();
-
-  // D
   pkt.positionXYZ[2] = NEDToModelXForwardZUp.Pos().Z();
 
-  // imuOrientationQuat is the rotation from world NED frame
-  // to the uav frame.
+  // orientation
   pkt.imuOrientationQuat[0] = NEDToModelXForwardZUp.Rot().W();
   pkt.imuOrientationQuat[1] = NEDToModelXForwardZUp.Rot().X();
   pkt.imuOrientationQuat[2] = NEDToModelXForwardZUp.Rot().Y();
   pkt.imuOrientationQuat[3] = NEDToModelXForwardZUp.Rot().Z();
 
-  // gzdbg << "imu [" << gazeboXYZToModelXForwardZDown.rot.GetAsEuler()
-  //       << "]\n";
-  // gzdbg << "ned [" << this->gazeboXYZToNED.rot.GetAsEuler() << "]\n";
-  // gzdbg << "rot [" << NEDToModelXForwardZUp.rot.GetAsEuler() << "]\n";
-
-  // Get NED velocity in body frame *
-  // or...
-  // Get model velocity in NED frame
+  // velocity in NED
   const ignition::math::Vector3d velGazeboWorldFrame =
     this->dataPtr->model->GetLink()->WorldLinearVel();
   const ignition::math::Vector3d velNEDFrame =
@@ -1198,29 +1101,6 @@ void ArduPilotPlugin::SendState() const
   pkt.velocityXYZ[0] = velNEDFrame.X();
   pkt.velocityXYZ[1] = velNEDFrame.Y();
   pkt.velocityXYZ[2] = velNEDFrame.Z();
-/* NOT MERGED IN MASTER YET
-  if (!this->dataPtr->gpsSensor)
-    {
 
-    }
-    else {
-        pkt.longitude = this->dataPtr->gpsSensor->Longitude().Degree();
-        pkt.latitude = this->dataPtr->gpsSensor->Latitude().Degree();
-        pkt.altitude = this->dataPtr->gpsSensor->Altitude();
-    }
-
-    // TODO : make generic enough to accept sonar/gpuray etc. too
-    if (!this->dataPtr->rangefinderSensor)
-    {
-
-    } else {
-        // Rangefinder value can not be send as Inf to ardupilot
-        const double range = this->dataPtr->rangefinderSensor->Range(0);
-        pkt.rangefinder = std::isinf(range) ? 0.0 : range;
-    }
-
-  // airspeed :     wind = Vector3(environment.wind.x, environment.wind.y, environment.wind.z)
-   // pkt.airspeed = (pkt.velocity - wind).length()
-*/
   this->dataPtr->socket_out.Send(&pkt, sizeof(pkt));
 }
