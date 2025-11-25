@@ -96,14 +96,7 @@
       </clip>
     </camera>
     <visualize>true</visualize>
-    <topic>/iris_demo/forward_cam/image_raw</topic>
   </sensor>
     </link>
-
-    <plugin name="down_cam_follower" filename="libFollowerDownCamPlugin.so">
-      <target_model>iris_demo</target_model>
-      <target_link>iris::base_link</target_link>
-      <offset>0 0 -0.05</offset>
-    </plugin>
   </model>
 </sdf>

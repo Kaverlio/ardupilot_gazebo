@@ -40,14 +40,37 @@
 
     <include>
       <uri>model://iris_with_ardupilot</uri>
-      <name>iris_demo</name>
+      <name>iris1</name>
       <pose>0 0 0 0 0 0</pose>
     </include>
 
     <include>
       <uri>model://down_cam</uri>
-      <name>down_cam</name>
+      <name>down_cam_1</name>
       <pose>0 0 0 0 0 0</pose>
+
+      <plugin name="down_cam_follower_1" filename="libFollowerDownCamPlugin.so">
+        <target_model>iris1</target_model>
+        <target_link>iris::base_link</target_link>
+        <offset>0 0 -0.05</offset>
+      </plugin>
+    </include>
+
+    <include>
+      <uri>model://iris_with_ardupilot_2</uri>
+      <name>iris2</name>
+      <pose>4 0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://down_cam</uri>
+      <name>down_cam_2</name>
+      <pose>4 0 0 0 0 0</pose>
+      <plugin name="down_cam_follower_2" filename="libFollowerDownCamPlugin.so">
+        <target_model>iris2</target_model>
+        <target_link>iris::base_link</target_link>
+        <offset>0 0 -0.05</offset>
+      </plugin>
     </include>
 
     <include>
